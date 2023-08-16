@@ -25,7 +25,7 @@ export default function CountDown() {
                         <div className="font-mono leading-none" x-text="seconds">{zeroPad(seconds)}</div>
                         <div className="font-mono uppercase text-sm leading-none">Seconds</div>
                     </div>
-                </div><p className="text-sm text-center mt-3">October 27, 2023</p>
+                </div><div className="text-sm text-center mt-3">October 27, 2023</div>
             </div>
         </div>
     );
