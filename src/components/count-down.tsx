@@ -1,8 +1,8 @@
 'use client';
-import Countdown, { zeroPad } from "react-countdown";
+import Countdown, { CountdownRendererFn, zeroPad } from "react-countdown";
 
 export default function CountDown() {
-    const renderer = ({ days, hours, minutes, seconds }: { days: string, hours: string, minutes: string, seconds: string }) => (
+    const renderer: CountdownRendererFn = ({ days, hours, minutes, seconds }) => (
         <div className="min-w-screen h-full flex items-center justify-center px-5 py-5">
             <div className="text-white absolute bottom-2">
                 <h1 className="text-3xl text-center mb-3 font-extralight">Wedding to start</h1>
