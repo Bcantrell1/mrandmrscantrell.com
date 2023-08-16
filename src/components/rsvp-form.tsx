@@ -17,6 +17,7 @@ import {
     FormMessage,
 } from "@/components/ui/form";
 
+import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
 
@@ -43,8 +44,28 @@ export function RsvpForm() {
         }
     }, [isBringingGuest, form]);
 
-    function onSubmit(data: z.infer<typeof formSchema>) {
+    async function onSubmit(data: z.infer<typeof formSchema>) {
         localStorage.setItem("hasRSVPed", "true");
+
+        fetch(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/person`, {
+            method: "POST",
+            body: JSON.stringify({
+                name: data.name,
+                updatedAt: new Date().toISOString(),
+                createdAt: new Date().toISOString(),
+            }),
+        });
+
+        if (data.guest) {
+            fetch(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/person`, {
+                method: "POST",
+                body: JSON.stringify({
+                    name: data.guest,
+                    updatedAt: new Date().toISOString(),
+                    createdAt: new Date().toISOString(),
+                }),
+            });
+        }
 
         // Update the state to show the thank you message
         setHasRSVPed(true);
@@ -61,14 +82,14 @@ export function RsvpForm() {
     if (hasRSVPed) {
         return (
             <div>
-                <p>Thank you for RSVPing for our wedding!</p>
+                <p>Thanks for the RSVP!</p>
             </div>
         );
     }
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 <FormField
                     control={form.control}
                     name="name"
@@ -83,16 +104,15 @@ export function RsvpForm() {
                                 <FormMessage />
                             </FormItem>
                             <FormItem>
-                                <label>
-                                    <input
-                                        type="checkbox"
-                                        onChange={() => {
-                                            setIsBringingGuest(!isBringingGuest)
-                                        }
-                                        }
-                                        checked={isBringingGuest}
-                                    />{" "}
-                                    Bringing a Guest
+                                <Checkbox id="guest" 
+                                    onCheckedChange={() => setIsBringingGuest(!isBringingGuest)}
+                                    checked={isBringingGuest}
+                                />
+                                <label
+                                    htmlFor="guest"
+                                    className="text-sm ml-3 font-medium"
+                                >
+                                   Going to bring a guest?
                                 </label>
                             </FormItem>
                         </>
@@ -111,14 +131,14 @@ export function RsvpForm() {
                                     <FormControl>
                                         <Input placeholder="Your guest name" {...field} name="guest" />
                                     </FormControl>
-                                    <FormDescription>Your guest name as you'll find it on the table.</FormDescription>
+                                    <FormDescription>Your guest's name as you'll find it on the table.</FormDescription>
                                     <FormMessage />
                                 </FormItem>
                             </>
                         )}
                     />
                 )}
-                <Button type="submit">Submit</Button>
+                <Button type="submit" className="text-orange-700 font-semibold">Let's Party</Button>
             </form>
         </Form>
     );
