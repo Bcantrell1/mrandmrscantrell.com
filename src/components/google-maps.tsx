@@ -20,10 +20,9 @@ export const GoogleMap = (props: any) => {
                 lng: -110.96240974778372
             }}
             zoom={16}
-            onClick={() => console.log("clicked")}
         >
             <Marker
-                position={{
+                mapCenter={{
                     lat: 32.38473908598577,
                     lng: -110.96240974778372
                 }}
