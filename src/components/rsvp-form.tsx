@@ -35,8 +35,8 @@ export function RsvpForm() {
     const [hasRSVPed, setHasRSVPed] = useState(false);
 
     useEffect(() => {
-        const hasRSVPed = localStorage.getItem("hasRSVPed");
-        if (hasRSVPed) {
+        const rSVPed = localStorage.getItem("hasRSVPed");
+        if (rSVPed) {
             setHasRSVPed(true);
         }
         if (!isBringingGuest) {
@@ -67,7 +67,6 @@ export function RsvpForm() {
             });
         }
 
-        // Update the state to show the thank you message
         setHasRSVPed(true);
         toast({
             title: "You submitted the following values:",

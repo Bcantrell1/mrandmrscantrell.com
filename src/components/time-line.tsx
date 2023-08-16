@@ -1,9 +1,12 @@
+'use client';
+import FallImage from "../../public/images/fall_bg.png";
 export default function Timeline() {
 
     return (
-        <div className="bg-white">
+        <div className="bg-white relative">
+            <h1 className="text-center z-20 relative text-4xl font-bold text-green-900 py-3">Wedding Day Timeline</h1>
             <div
-                className="flex flex-col md:grid grid-cols-9 mx-auto p-2 text-green-50"
+                className="flex flex-col z-20 relative max-w-2xl md:grid grid-cols-9 mx-auto p-2 text-green-50"
             >
                 <div className="flex flex-row-reverse md:contents">
                     <div
@@ -96,6 +99,12 @@ export default function Timeline() {
                     </div>
                 </div>
             </div>
+            <div className="opacity-20 absolute top-0 z-0 bg-cover bg-no-repeat" style={{
+        backgroundImage: `url(${FallImage.src})`,
+            backgroundPosition: "bottom",
+        height: "100%",
+        width: "100%",
+      }}></div>
         </div>
     );
 }

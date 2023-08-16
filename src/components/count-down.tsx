@@ -1,9 +1,12 @@
 'use client';
-import Countdown, { CountdownRendererFn, zeroPad } from "react-countdown";
+import Countdown, { zeroPad } from "react-countdown";
+import {  useState } from "react";
 
 export default function CountDown() {
-    const renderer: CountdownRendererFn = ({ days, hours, minutes, seconds }) => (
-        <div className="min-w-screen h-full flex items-center justify-center px-5 py-5">
+    const [date, setDate] = useState<Date | null>(new Date("2023-10-27"));
+
+    const renderer = ({ days, hours, minutes, seconds }: {days: any, hours: any, minutes: any, seconds: any}) => (
+        <section className="min-w-screen h-full flex items-center justify-center px-5 py-5">
             <div className="text-white absolute bottom-2">
                 <h1 className="text-3xl text-center mb-3 font-extralight">Wedding to start</h1>
                 <div className="text-6xl text-center flex w-full items-center justify-center">
@@ -25,12 +28,13 @@ export default function CountDown() {
                         <div className="font-mono leading-none" x-text="seconds">{zeroPad(seconds)}</div>
                         <div className="font-mono uppercase text-sm leading-none">Seconds</div>
                     </div>
-                </div><div className="text-sm text-center mt-3">October 27, 2023</div>
+                </div>
+                <div className="text-sm text-center mt-3">October 27, 2023</div>
             </div>
-        </div>
+        </section>
     );
 
     return (
-            <Countdown date={new Date("2023-10-27")} renderer={renderer} />
+            <Countdown date={date || new Date()} renderer={renderer} />
     )
 }
