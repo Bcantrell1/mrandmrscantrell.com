@@ -100,7 +100,7 @@ export function RsvpForm() {
                                 <FormControl>
                                     <Input placeholder="Your name" {...field} />
                                 </FormControl>
-                                <FormDescription>Your name as you'll find it on your table.</FormDescription>
+                                <FormDescription>Your name as you&apos;ll find it on your table.</FormDescription>
                                 <FormMessage />
                             </FormItem>
                             <FormItem>
@@ -131,14 +131,14 @@ export function RsvpForm() {
                                     <FormControl>
                                         <Input placeholder="Your guest name" {...field} name="guest" />
                                     </FormControl>
-                                    <FormDescription>Your guest's name as you'll find it on the table.</FormDescription>
+                                    <FormDescription>Your guest&apos;s name as you&apos;ll find it on the table.</FormDescription>
                                     <FormMessage />
                                 </FormItem>
                             </>
                         )}
                     />
                 )}
-                <Button type="submit" className="text-orange-700 font-semibold">Let's Party</Button>
+                <Button type="submit" className="text-orange-700 font-semibold">Let&apos;s Party</Button>
             </form>
         </Form>
     );

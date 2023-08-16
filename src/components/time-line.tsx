@@ -11,7 +11,7 @@ export default function Timeline() {
                     >
                         <h3 className="font-mono text-2xl mb-1">4:15</h3>
                         <p className="leading-tight text-justify">
-                            Hopefully you're here by now! Get settled in and find a seat of your choice!
+                            Hopefully you&apos;re here by now! Get settled in and find a seat of your choice!
                         </p>
                     </div>
                     <div className="col-start-5 col-end-6 md:mx-auto relative mr-10">
@@ -37,7 +37,7 @@ export default function Timeline() {
                     >
                         <h3 className="font-mono text-2xl mb-1">4:30</h3>
                         <p className="leading-tight text-justify">
-                            It's time to finally do this thing! The ceremony  will begin.
+                            It&apos;s time to finally do this thing! The ceremony  will begin.
                         </p>
                     </div>
                 </div>
