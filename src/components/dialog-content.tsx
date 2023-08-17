@@ -38,7 +38,7 @@ export default function DialogContent() {
                 ) : (
                     <>
                         <AlertDialogHeader>
-                            <AlertDialogTitle className="text-xl">Thanks for considering to RSVP for our wedding!</AlertDialogTitle>
+                            <AlertDialogTitle className="text-center text-xl">Thanks for considering to RSVP for our wedding!</AlertDialogTitle>
                             <AlertDialogDescription className="text-center pb-3">
                                 We ask that you please bring no more than a single guest.
                             </AlertDialogDescription>
@@ -46,7 +46,7 @@ export default function DialogContent() {
                     </>
                 )}
                 {hasRSVPed ? null : <RsvpForm />}
-                <AlertDialogFooter className="absolute top-0 right-0">
+                <AlertDialogFooter className="absolute bottom-0 right-0">
                     <AlertDialogCancel>X</AlertDialogCancel>
                 </AlertDialogFooter>
             </div>
