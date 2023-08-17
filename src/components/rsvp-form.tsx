@@ -128,7 +128,7 @@ export function RsvpForm() {
                                 <FormItem>
                                     <FormLabel>Guest Name</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="Your guest name" {...field} name="guest" />
+                                        <Input placeholder="Your guest's name" {...field} name="guest" />
                                     </FormControl>
                                     <FormDescription>Your guest&apos;s name as you&apos;ll find it on the table.</FormDescription>
                                     <FormMessage />
