@@ -31,6 +31,13 @@ export function DataTable<TData, TValue>({
     getCoreRowModel: getCoreRowModel(),
   })
 
+  async function onDelete(data: any) {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/person/${data.id}`, {
+        method: "DELETE",
+    });
+    console.log(response);
+  }
+
   return (
     <div className="rounded-md border">
       <Table>
@@ -58,6 +65,8 @@ export function DataTable<TData, TValue>({
               <TableRow
                 key={row.id}
                 data-state={row.getIsSelected() && "selected"}
+                // uncomment to delete in local setup only
+                //onClick={() => onDelete(row.original)}  
               >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id}>

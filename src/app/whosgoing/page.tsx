@@ -1,21 +1,37 @@
+'use client';
+
 import { columns } from "./columns"
 import { DataTable } from "./data-table"
 import { Person } from "@prisma/client";
-import { prisma } from "@/lib/prisma";
+import { useEffect, useState } from 'react';
 
-async function getData(): Promise<Person[]> {
-  // Fetch data from your API here.
-  let people: Person[] = await prisma.person.findMany();
-  return people;
-}
+export default function DemoPage() {
+  const [data, setData] = useState<Person[]>([]);
 
-export default async function DemoPage() {
-  const data = await getData()
+  async function getData() {
+      try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/person/`, {
+        method: "GET",
+      });
+        const newData = await response.json();
+        setData(newData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <div className="container mx-auto py-10">
-      <DataTable columns={columns} data={data} />
+      {data.length > 0 ? (
+        <DataTable columns={columns} data={data} />
+      ) : (
+        <p>Loading data...</p>
+      )}
     </div>
-  )
+  );
 }
 

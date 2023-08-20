@@ -39,13 +39,13 @@ export async function PATCH(
 }
 
 export async function DELETE(
-  request: Request,
-  { params }: { params: { id: number } }
+ request: Request, params:any 
 ) {
   try {
-    const id = params.id;
+    const id = Number(params.params.id);
+    console.log(id);
     await prisma.person.delete({
-      where: { id },
+      where: { id }, 
     });
 
     return new NextResponse(null, { status: 204 });
