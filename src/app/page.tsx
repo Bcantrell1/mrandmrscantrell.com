@@ -7,6 +7,7 @@ import Hero from "@/components/hero";
 import GoogleMap from "@/components/google-maps";
 import Timeline from "@/components/time-line";
 import WeddingDetails from "@/components/wed-details";
+import MoonFund from "@/components/moon-fund";
 
 export default function Home() {
   return (

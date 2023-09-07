@@ -15,6 +15,9 @@ module.exports = {
         "2xl": "1400px",
       },
     },
+    fontFamily: {
+      custom: ["Dancing Script", "cursive"],
+    },
     extend: {
       colors: {
         border: "hsl(var(--border))",
